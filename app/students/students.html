@@ -1,4 +1,31 @@
 <h2>Students</h2>
-<ul>
-	<li>Here are your students...</li>
+<label>Search Students <input data-ng-model="searchFilter" /></label>
+<ul student-list>
+	<li data-ng-repeat="student in vm.students | orderBy: 'LastName' | filter: searchFilter" >
+		<div><span class="student-listing" data-ng-class="{'active': vm.showInfoForStudent == student.Id}" data-ng-click="vm.viewStudentInfo(student)">{{student.LastName}}, {{student.FirstName}}</span></div>
+		<div class="student-info" data-ng-if="vm.showInfoForStudent == student.Id">
+			<table >
+				<tr>
+					<td>Student ID#:</td>
+					<td>{{student.Id}}</td>
+				</tr>
+				<tr>
+					<td>Favorite Color:</td>
+					<td>{{student.FavoriteColor}}</td>
+				</tr>
+				<tr>
+					<td>Favorite Food:</td>
+					<td>{{student.FavoriteFood}}</td>
+				</tr>
+				<tr>
+					<td>Favorite Movie:</td>
+					<td>{{student.FavoriteMovie}}</td>
+				</tr>
+			</table>
+		</div>
+	</li>
 </ul>
+<div class="loading" data-ng-if="vm.loading">Loading Student Data...</div>
+<div class="data-error" data-ng-if="vm.dataError">
+	There was an error loading the data. Please refresh the page and try again
+</div>

@@ -1,1 +1,27 @@
 /* app css stylesheet */
+.student-listing {
+	border-bottom: 1px solid rgba(0,0,0,0);
+	transition: border-bottom .5s ease;
+}
+.student-listing:hover {
+	cursor: pointer;
+	border-bottom: 1px solid rgba(0,0,0,1);
+}
+.student-listing.active {
+	font-weight: bold;
+}
+
+table {
+	border: 1px solid #000;
+	display: inline-block;
+}
+
+td {
+	padding: 5px;
+}
+td:first-child {
+	font-weight: bold;
+}
+td:nth-child(2) {
+	position: relative;
+}
